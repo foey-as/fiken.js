@@ -1,0 +1,18 @@
+{
+	"name": "fiken",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/foey-as/fiken.git"
+	},
+	"author": "Føy AS",
+	"bugs": {
+		"url": "https://github.com/foey-as/fiken/issues"
+	},
+	"homepage": "https://github.com/foey-as/fiken#readme"
+}
