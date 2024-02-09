@@ -1,9 +1,11 @@
-export function applyMixins(derivedCtor: any, baseCtors: any[]): void {
+export function applyMixins(derivedCtor: any, baseCtors: any[]) {
 	baseCtors.forEach((baseCtor) => {
 		Object.getOwnPropertyNames(baseCtor.prototype).forEach((name) => {
-			const descriptor =
-				Object.getOwnPropertyDescriptor(baseCtor.prototype, name) || {};
-			Object.defineProperty(derivedCtor.prototype, name, descriptor);
+			Object.defineProperty(
+				derivedCtor.prototype,
+				name,
+				Object.getOwnPropertyDescriptor(baseCtor.prototype, name)
+			);
 		});
 	});
 }
