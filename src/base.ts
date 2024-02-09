@@ -18,7 +18,7 @@ export abstract class Base {
 		this.apiKey = config.apiKey;
 		this.basePath =
 			config.basePath ||
-			`https://api.fiken.no/api/v2/companies/${this.companySlug}`;
+			`https://api.fiken.no/api/v2/companies/${this.companySlug}/`;
 	}
 
 	protected request<T>(endpoint: string, options?: RequestInit): Promise<T> {
