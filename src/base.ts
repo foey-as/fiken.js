@@ -1,26 +1,30 @@
 type Config = {
 	apiKey: string;
-	basePath: string;
+	companySlug: string;
+	basePath?: string;
 };
 
 export type Pagination = {
 	page?: number;
-	limit?: number;
+	pageSize?: number;
 };
 
 export abstract class Base {
 	private apiKey: string;
 	private basePath: string;
+	private companySlug: string;
 
 	constructor(config: Config) {
 		this.apiKey = config.apiKey;
-		this.basePath = config.basePath;
+		this.basePath =
+			config.basePath ||
+			`https://api.fiken.no/api/v2/companies/${this.companySlug}`;
 	}
 
 	protected request<T>(endpoint: string, options?: RequestInit): Promise<T> {
 		const url = this.basePath + endpoint;
 		const headers = {
-			'api-key': this.apiKey,
+			Authorization: 'Bearer ' + this.apiKey,
 			'Content-type': 'application/json',
 		};
 
