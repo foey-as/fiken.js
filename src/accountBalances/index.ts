@@ -5,7 +5,7 @@ import { Base } from '../base';
 const resourceName = 'accountbalances';
 
 export class AccountBalances extends Base {
-	getAccountBalances(params: AccountBalancesParams) {
+	public getAccountBalances(params: AccountBalancesParams) {
 		let query = resourceName;
 
 		query += qs.stringify(params, '?');
@@ -13,7 +13,7 @@ export class AccountBalances extends Base {
 		return this.request<AccountBalance[]>(query);
 	}
 
-	getAccountBalance(accountCode: string, params: AccountBalanceParams) {
+	public getAccountBalance(accountCode: string, params: AccountBalanceParams) {
 		let query = resourceName + `/${accountCode}`;
 
 		query += qs.stringify(params, '?');
