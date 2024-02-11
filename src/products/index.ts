@@ -1,17 +1,57 @@
 import { Base } from '../base';
+import {
+	product,
+	productSalesReportRequest,
+	productSalesReportResult,
+} from '../schemas';
 
 const resourceName = 'products';
 
 export class Products extends Base {
-	getProducts() {}
+	getProducts() {
+		return this.request<product[]>(`/${resourceName}`);
+	}
 
-	createProduct() {}
+	createProduct(product: product) {
+		return this.request<void>(`/${resourceName}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(product),
+		});
+	}
 
-	getProduct() {}
+	getProduct(productId: number) {
+		return this.request<product>(`/${resourceName}/${productId}`);
+	}
 
-	updateProduct() {}
+	updateProduct(productId: number, updatedProduct: product) {
+		return this.request<void>(`/${resourceName}/${productId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedProduct),
+		});
+	}
 
-	deleteProduct() {}
+	deleteProduct(productId: number) {
+		return this.request<void>(`/${resourceName}/${productId}`, {
+			method: 'DELETE',
+		});
+	}
 
-	salesReport() {}
+	salesReport(productSalesReportReq: productSalesReportRequest) {
+		return this.request<productSalesReportResult>(
+			`/${resourceName}/salesReport`,
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(productSalesReportReq),
+			}
+		);
+	}
 }
