@@ -1,22 +1,18 @@
 import { Base } from '../base';
-import {
-	AccountBalance,
-	AccountBalanceParams,
-	AccountBalancesParams,
-} from './types';
+import { AccountBalance, AccountBalancesParams } from './types';
 
 const resourceName = 'accountBalances';
 
 export class AccountBalances extends Base {
-	getAccountBalances(params: AccountBalancesParams) {
-		const searchParams = this.prepareParamsForURLSearch(params);
+	getAccountBalances(date: string, params?: AccountBalancesParams) {
+		const searchParams = this.prepareParamsForURLSearch({ date, ...params });
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
 		return this.request<AccountBalance[]>(`${resourceName}${queryString}`);
 	}
 
-	getAccountBalance(accountCode: string, params: AccountBalanceParams) {
-		const searchParams = this.prepareParamsForURLSearch(params);
+	getAccountBalance(accountCode: string, date: string) {
+		const searchParams = this.prepareParamsForURLSearch({ date });
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
 		return this.request<AccountBalance>(
