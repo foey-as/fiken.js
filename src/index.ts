@@ -8,6 +8,7 @@ import { Groups } from './groups';
 import { Inbox } from './inbox';
 import { Invoices } from './invoices';
 import { Offers } from './offers';
+import { OrderConfirmations } from './orderConfirmations';
 import { Products } from './products';
 import { Projects } from './projects';
 import { Transactions } from './transactions';
@@ -35,7 +36,8 @@ interface Fiken
 		CreditNotes,
 		Projects,
 		Offers,
-		Inbox {}
+		Inbox,
+		OrderConfirmations {}
 
 applyMixins(Fiken, [
 	Contacts,
@@ -50,6 +52,7 @@ applyMixins(Fiken, [
 	Offers,
 	Projects,
 	Inbox,
+	OrderConfirmations,
 ]);
 
 export default Fiken;
