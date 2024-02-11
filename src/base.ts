@@ -1,9 +1,6 @@
-import fetch from 'isomorphic-unfetch';
-
 type Config = {
 	apiKey: string;
 	companySlug: string;
-	basePath?: string;
 };
 
 export type Pagination = {
@@ -18,16 +15,15 @@ export abstract class Base {
 
 	constructor(config: Config) {
 		this.apiKey = config.apiKey;
-		this.basePath =
-			config.basePath ||
-			`https://api.fiken.no/api/v2/companies/${this.companySlug}/`;
+		this.companySlug = config.companySlug;
+		this.basePath = `https://api.fiken.no/api/v2/companies/${this.companySlug}/`;
 	}
 
 	protected request<T>(endpoint: string, options?: RequestInit): Promise<T> {
 		const url = this.basePath + endpoint;
 		const headers = {
 			Authorization: 'Bearer ' + this.apiKey,
-			'Content-type': 'application/json',
+			Accept: 'application/json',
 		};
 
 		const config = {
@@ -39,7 +35,22 @@ export abstract class Base {
 			if (r.ok) {
 				return r.json();
 			}
+			console.log(r.headers);
 			throw new Error(r.statusText);
 		});
+	}
+
+	protected prepareParamsForURLSearch(params: any): Record<string, string> {
+		const result: Record<string, string> = {};
+
+		Object.keys(params).forEach((key) => {
+			const value = params[key];
+			if (value !== undefined) {
+				// Exclude undefined values
+				result[key] = String(value); // Convert everything to strings
+			}
+		});
+
+		return result;
 	}
 }

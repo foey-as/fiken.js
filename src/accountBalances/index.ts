@@ -1,23 +1,26 @@
-import qs from 'querystringify';
-
 import { Base } from '../base';
+import {
+	AccountBalance,
+	AccountBalanceParams,
+	AccountBalancesParams,
+} from './types';
 
-const resourceName = 'accountbalances';
+const resourceName = 'accountBalances';
 
 export class AccountBalances extends Base {
-	public getAccountBalances(params: AccountBalancesParams) {
-		let query = resourceName;
+	getAccountBalances(params: AccountBalancesParams) {
+		const searchParams = this.prepareParamsForURLSearch(params);
+		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
-		query += qs.stringify(params, '?');
-
-		return this.request<AccountBalance[]>(query);
+		return this.request<AccountBalance[]>(`${resourceName}${queryString}`);
 	}
 
-	public getAccountBalance(accountCode: string, params: AccountBalanceParams) {
-		let query = resourceName + `/${accountCode}`;
+	getAccountBalance(accountCode: string, params: AccountBalanceParams) {
+		const searchParams = this.prepareParamsForURLSearch(params);
+		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
-		query += qs.stringify(params, '?');
-
-		return this.request<AccountBalance>(query);
+		return this.request<AccountBalance>(
+			`${resourceName}/${accountCode}${queryString}`
+		);
 	}
 }

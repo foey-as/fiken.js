@@ -3,10 +3,22 @@ import { Accounts } from './accounts';
 import { Base } from './base';
 import { Contacts } from './contacts';
 import { Groups } from './groups';
+import { Company } from './types';
 import { applyMixins } from './utils';
 
-class Fiken extends Base {}
+class Fiken extends Base {
+	getCompanies() {
+		return this.request<Company>('');
+	}
+}
 interface Fiken extends Contacts, Accounts, AccountBalances, Groups {}
 applyMixins(Fiken, [Contacts, Accounts, AccountBalances, Groups]);
 
 export default Fiken;
+
+const fiken = new Fiken({
+	apiKey: '5581387990.wTxC1RxSKiVWqtIMlS3wbCdewKhoY474',
+	companySlug: 'fiken-demo-hel-brod-as',
+});
+
+fiken.getCompanies().then((accounts) => console.log(accounts));

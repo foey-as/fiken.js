@@ -1,4 +1,4 @@
-interface AccountBalancesParams {
+export interface AccountBalancesParams {
 	date: string;
 	fromAccount?: string;
 	toAccount?: string;
@@ -6,11 +6,11 @@ interface AccountBalancesParams {
 	pageSize?: number;
 }
 
-interface AccountBalanceParams {
+export interface AccountBalanceParams {
 	date: string;
 }
 
-interface AccountBalance {
+export interface AccountBalance {
 	code: string;
 	name: string;
 	balance: number;
