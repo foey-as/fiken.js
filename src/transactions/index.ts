@@ -1,7 +1,12 @@
 import { Base } from '../base';
+import { transaction } from '../schemas';
 
 export class Transactions extends Base {
-	getTransactions() {}
+	getTransactions() {
+		return this.request<transaction[]>('/transactions');
+	}
 
-	getTransaction() {}
+	getTransaction(transactionId: number) {
+		return this.request<transaction>(`/transactions/${transactionId}`);
+	}
 }
