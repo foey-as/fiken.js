@@ -1,5 +1,9 @@
 import { Base } from '../base';
-import { BankAccount, BankAccountsParams } from './types';
+import {
+	BankAccount,
+	BankAccountsParams,
+	CreateBankAccountParams,
+} from './types';
 
 const resourceName = 'bankaccounts';
 
@@ -9,5 +13,19 @@ export class BankAccounts extends Base {
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
 		return this.request<BankAccount[]>(resourceName + queryString);
+	}
+
+	getBankAccount(bankAccountId: number) {
+		return this.request<BankAccount>(`${resourceName}/${bankAccountId}`);
+	}
+
+	createBankAccount(params: CreateBankAccountParams) {
+		return this.request<void>(resourceName, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(params),
+		});
 	}
 }
