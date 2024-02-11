@@ -4,9 +4,3 @@ export interface AccountBalancesParams {
 	page?: number;
 	pageSize?: number;
 }
-
-export interface AccountBalance {
-	code: string;
-	name: string;
-	balance: number;
-}

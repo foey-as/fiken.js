@@ -1,9 +1,6 @@
 import { Base } from '../base';
-import {
-	BankAccount,
-	BankAccountsParams,
-	CreateBankAccountParams,
-} from './types';
+import { bankAccountRequest, bankAccountResult } from '../schemas';
+import { BankAccountsParams } from './types';
 
 const resourceName = 'bankaccounts';
 
@@ -12,14 +9,14 @@ export class BankAccounts extends Base {
 		const searchParams = this.prepareParamsForURLSearch(params);
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
-		return this.request<BankAccount[]>(resourceName + queryString);
+		return this.request<bankAccountResult[]>(resourceName + queryString);
 	}
 
 	getBankAccount(bankAccountId: number) {
-		return this.request<BankAccount>(`${resourceName}/${bankAccountId}`);
+		return this.request<bankAccountResult>(`${resourceName}/${bankAccountId}`);
 	}
 
-	createBankAccount(params: CreateBankAccountParams) {
+	createBankAccount(params: bankAccountRequest) {
 		return this.request<void>(resourceName, {
 			method: 'POST',
 			headers: {

@@ -1,5 +1,6 @@
 import { Base } from '../base';
-import { AccountBalance, AccountBalancesParams } from './types';
+import { accountBalance } from '../schemas';
+import { AccountBalancesParams } from './types';
 
 const resourceName = 'accountBalances';
 
@@ -8,14 +9,14 @@ export class AccountBalances extends Base {
 		const searchParams = this.prepareParamsForURLSearch({ date, ...params });
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
-		return this.request<AccountBalance[]>(`${resourceName}${queryString}`);
+		return this.request<accountBalance[]>(`${resourceName}${queryString}`);
 	}
 
 	getAccountBalance(accountCode: string, date: string) {
 		const searchParams = this.prepareParamsForURLSearch({ date });
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
-		return this.request<AccountBalance>(
+		return this.request<accountBalance>(
 			`${resourceName}/${accountCode}${queryString}`
 		);
 	}

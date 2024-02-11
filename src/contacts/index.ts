@@ -1,13 +1,13 @@
 import { Base } from '../base';
-import { Contact, ContactPerson } from './types';
+import { contact, contactPerson } from '../schemas';
 
 export class Contacts extends Base {
 	getContacts() {
-		return this.request<Contact[]>('/contacts');
+		return this.request<contact[]>('/contacts');
 	}
 
 	getContact(contactId: number) {
-		return this.request<Contact>(`/contacts/${contactId}`);
+		return this.request<contact>(`/contacts/${contactId}`);
 	}
 
 	createContact() {}
@@ -15,7 +15,7 @@ export class Contacts extends Base {
 	updateContact() {}
 
 	getContactPersons(contactId: number) {
-		return this.request<ContactPerson[]>(
+		return this.request<contactPerson[]>(
 			`/contacts/${contactId}/contactPerson`
 		);
 	}
@@ -23,7 +23,7 @@ export class Contacts extends Base {
 	createContactPersonAttachment() {}
 
 	getContactPerson(contactId: number, contactPersonId: number) {
-		return this.request<ContactPerson>(
+		return this.request<contactPerson>(
 			`/contacts/${contactId}/contactPerson/${contactPersonId}`
 		);
 	}

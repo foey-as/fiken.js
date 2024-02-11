@@ -4,8 +4,3 @@ export interface AccountsParams {
 	fromAccount?: string;
 	toAccount?: string;
 }
-
-export interface Account {
-	code: string;
-	name: string;
-}

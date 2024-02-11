@@ -1,5 +1,6 @@
 import { Base } from '../base';
-import { Account, AccountsParams } from './types';
+import { account } from '../schemas';
+import { AccountsParams } from './types';
 
 const resourceName = 'accounts';
 
@@ -8,10 +9,10 @@ export class Accounts extends Base {
 		const searchParams = this.prepareParamsForURLSearch(params);
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
-		return this.request<Account[]>(resourceName + queryString);
+		return this.request<account[]>(resourceName + queryString);
 	}
 
 	getAccount(accountCode: string) {
-		return this.request<Account>(`${resourceName}/${accountCode}`);
+		return this.request<account>(`${resourceName}/${accountCode}`);
 	}
 }
