@@ -8,6 +8,7 @@ import { Groups } from './groups';
 import { Invoices } from './invoices';
 import { Offers } from './offers';
 import { Products } from './products';
+import { Projects } from './projects';
 import { Transactions } from './transactions';
 import { CompaniesParams, Company } from './types';
 import { applyMixins } from './utils';
@@ -30,6 +31,7 @@ interface Fiken
 		Transactions,
 		Invoices,
 		CreditNotes,
+		Projects,
 		Offers {}
 applyMixins(Fiken, [
 	Contacts,
@@ -42,6 +44,7 @@ applyMixins(Fiken, [
 	Invoices,
 	CreditNotes,
 	Offers,
+	Projects,
 ]);
 
 export default Fiken;
