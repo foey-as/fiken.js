@@ -5,6 +5,7 @@ import { Base } from './base';
 import { Contacts } from './contacts';
 import { Groups } from './groups';
 import { Products } from './products';
+import { Transactions } from './transactions';
 import { CompaniesParams, Company } from './types';
 import { applyMixins } from './utils';
 
@@ -22,7 +23,8 @@ interface Fiken
 		AccountBalances,
 		Groups,
 		BankAccounts,
-		Products {}
+		Products,
+		Transactions {}
 applyMixins(Fiken, [
 	Contacts,
 	Accounts,
@@ -30,6 +32,7 @@ applyMixins(Fiken, [
 	Groups,
 	BankAccounts,
 	Products,
+	Transactions,
 ]);
 
 export default Fiken;
