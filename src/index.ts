@@ -1,5 +1,6 @@
 import { AccountBalances } from './accountBalances';
 import { Accounts } from './accounts';
+import { BankAccounts } from './bankAccounts';
 import { Base } from './base';
 import { Contacts } from './contacts';
 import { Groups } from './groups';
@@ -14,14 +15,12 @@ class Fiken extends Base {
 		return this.request<Company[]>(queryString);
 	}
 }
-interface Fiken extends Contacts, Accounts, AccountBalances, Groups {}
-applyMixins(Fiken, [Contacts, Accounts, AccountBalances, Groups]);
+interface Fiken
+	extends Contacts,
+		Accounts,
+		AccountBalances,
+		Groups,
+		BankAccounts {}
+applyMixins(Fiken, [Contacts, Accounts, AccountBalances, Groups, BankAccounts]);
 
 export default Fiken;
-
-const fiken = new Fiken({
-	apiKey: '5581387990.wTxC1RxSKiVWqtIMlS3wbCdewKhoY474',
-	companySlug: 'fiken-demo-hel-brod-as',
-});
-
-fiken.getCompanies().then((accounts) => console.log(accounts));
