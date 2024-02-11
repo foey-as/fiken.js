@@ -1,3 +1,9 @@
+export interface CompaniesParams {
+	page?: number;
+	pageSize?: number;
+	sortBy?: string;
+}
+
 export interface Company {
 	name: string;
 	slug: string;

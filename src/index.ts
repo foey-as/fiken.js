@@ -3,12 +3,15 @@ import { Accounts } from './accounts';
 import { Base } from './base';
 import { Contacts } from './contacts';
 import { Groups } from './groups';
-import { Company } from './types';
+import { CompaniesParams, Company } from './types';
 import { applyMixins } from './utils';
 
 class Fiken extends Base {
-	getCompanies() {
-		return this.request<Company>('');
+	getCompanies(params?: CompaniesParams) {
+		const searchParams = this.prepareParamsForURLSearch(params);
+		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
+
+		return this.request<Company>(queryString);
 	}
 }
 interface Fiken extends Contacts, Accounts, AccountBalances, Groups {}
