@@ -13,7 +13,7 @@ export class Invoices extends Base {
 
 	sendInvoice() {}
 
-	getCounter() {}
+	getInvoiceCounter() {}
 
 	getInvoiceDrafts() {}
 
