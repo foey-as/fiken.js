@@ -3,6 +3,7 @@ import { Accounts } from './accounts';
 import { BankAccounts } from './bankAccounts';
 import { Base } from './base';
 import { Contacts } from './contacts';
+import { CreditNotes } from './creditNotes';
 import { Groups } from './groups';
 import { Invoices } from './invoices';
 import { Products } from './products';
@@ -26,7 +27,8 @@ interface Fiken
 		BankAccounts,
 		Products,
 		Transactions,
-		Invoices {}
+		Invoices,
+		CreditNotes {}
 applyMixins(Fiken, [
 	Contacts,
 	Accounts,
@@ -36,6 +38,7 @@ applyMixins(Fiken, [
 	Products,
 	Transactions,
 	Invoices,
+	CreditNotes,
 ]);
 
 export default Fiken;
