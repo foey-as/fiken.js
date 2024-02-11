@@ -6,13 +6,29 @@ export class Contacts extends Base {
 		return this.request<contact[]>('/contacts');
 	}
 
+	createContact(contact: contact) {
+		return this.request<contact>('/contacts', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(contact),
+		});
+	}
+
 	getContact(contactId: number) {
 		return this.request<contact>(`/contacts/${contactId}`);
 	}
 
-	createContact() {}
-
-	updateContact() {}
+	updateContact(contactId: number, updatedContact: contact) {
+		return this.request<contact>(`/contacts/${contactId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(updatedContact),
+		});
+	}
 
 	getContactPersons(contactId: number) {
 		return this.request<contactPerson[]>(
@@ -20,7 +36,9 @@ export class Contacts extends Base {
 		);
 	}
 
-	createContactPersonAttachment() {}
+	createContactPersonAttachment() {
+		throw new Error('Not implemented');
+	}
 
 	getContactPerson(contactId: number, contactPersonId: number) {
 		return this.request<contactPerson>(
@@ -28,9 +46,39 @@ export class Contacts extends Base {
 		);
 	}
 
-	createContactPerson() {}
+	createContactPerson(contactId: number, contactPerson: contactPerson) {
+		return this.request<void>(`/contacts/${contactId}/contactPerson`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(contactPerson),
+		});
+	}
 
-	updateContactPerson() {}
+	updateContactPerson(
+		contactId: number,
+		contactPersonId: number,
+		contactPerson: contactPerson
+	) {
+		return this.request<void>(
+			`/contacts/${contactId}/contactPerson/${contactPersonId}`,
+			{
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(contactPerson),
+			}
+		);
+	}
 
-	deleteContactPerson() {}
+	deleteContactPerson(contactId: number, contactPersonId: number) {
+		return this.request<void>(
+			`/contacts/${contactId}/contactPerson/${contactPersonId}`,
+			{
+				method: 'DELETE',
+			}
+		);
+	}
 }
