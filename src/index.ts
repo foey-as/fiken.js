@@ -11,7 +11,7 @@ class Fiken extends Base {
 		const searchParams = this.prepareParamsForURLSearch(params);
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
-		return this.request<Company>(queryString);
+		return this.request<Company[]>(queryString);
 	}
 }
 interface Fiken extends Contacts, Accounts, AccountBalances, Groups {}
