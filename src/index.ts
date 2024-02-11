@@ -11,6 +11,7 @@ import { Offers } from './offers';
 import { OrderConfirmations } from './orderConfirmations';
 import { Products } from './products';
 import { Projects } from './projects';
+import { Purchases } from './purchases';
 import { Sales } from './sales';
 import { Transactions } from './transactions';
 import { CompaniesParams, Company } from './types';
@@ -39,6 +40,7 @@ interface Fiken
 		Offers,
 		Inbox,
 		OrderConfirmations,
+		Purchases
 		Sales {}
 
 applyMixins(Fiken, [
@@ -55,6 +57,7 @@ applyMixins(Fiken, [
 	Projects,
 	Inbox,
 	OrderConfirmations,
+	Purchases,
 	Sales,
 ]);
 
