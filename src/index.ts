@@ -40,7 +40,7 @@ interface Fiken
 		Offers,
 		Inbox,
 		OrderConfirmations,
-		Purchases
+		Purchases,
 		Sales {}
 
 applyMixins(Fiken, [
