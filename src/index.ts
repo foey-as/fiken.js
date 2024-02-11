@@ -4,6 +4,7 @@ import { BankAccounts } from './bankAccounts';
 import { Base } from './base';
 import { Contacts } from './contacts';
 import { Groups } from './groups';
+import { Invoices } from './invoices';
 import { Products } from './products';
 import { Transactions } from './transactions';
 import { CompaniesParams, Company } from './types';
@@ -24,7 +25,8 @@ interface Fiken
 		Groups,
 		BankAccounts,
 		Products,
-		Transactions {}
+		Transactions,
+		Invoices {}
 applyMixins(Fiken, [
 	Contacts,
 	Accounts,
@@ -33,6 +35,7 @@ applyMixins(Fiken, [
 	BankAccounts,
 	Products,
 	Transactions,
+	Invoices,
 ]);
 
 export default Fiken;
