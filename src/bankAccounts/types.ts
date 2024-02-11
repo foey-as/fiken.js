@@ -1,3 +1,10 @@
+export enum BankAccountType {
+	'normal',
+	'tax_deduction',
+	'foreign',
+	'credit_card',
+}
+
 export interface BankAccountsParams {
 	page?: number;
 	pageSize?: number;
@@ -10,7 +17,7 @@ export interface CreateBankAccountParams {
 	bic?: string;
 	iban?: string;
 	foreignService?: string;
-	type: 'normal' | 'tax_deduction' | 'foreign' | 'credit_card';
+	type: BankAccountType;
 	inactive?: boolean;
 }
 
@@ -19,6 +26,10 @@ export interface BankAccount {
 	name: string;
 	accountCode: string;
 	bankAccountNumber: string;
-	type: string;
+	iban: string;
+	bic: string;
+	type: BankAccountType;
+	reconciledBalance: number;
+	reconciledDate: string;
 	inactive: boolean;
 }
