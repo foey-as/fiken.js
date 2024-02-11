@@ -5,6 +5,7 @@ import { Base } from './base';
 import { Contacts } from './contacts';
 import { CreditNotes } from './creditNotes';
 import { Groups } from './groups';
+import { Inbox } from './inbox';
 import { Invoices } from './invoices';
 import { Offers } from './offers';
 import { Products } from './products';
@@ -21,6 +22,7 @@ class Fiken extends Base {
 		return this.request<Company[]>(queryString);
 	}
 }
+
 interface Fiken
 	extends Contacts,
 		Accounts,
@@ -32,7 +34,9 @@ interface Fiken
 		Invoices,
 		CreditNotes,
 		Projects,
-		Offers {}
+		Offers,
+		Inbox {}
+
 applyMixins(Fiken, [
 	Contacts,
 	Accounts,
@@ -45,6 +49,7 @@ applyMixins(Fiken, [
 	CreditNotes,
 	Offers,
 	Projects,
+	Inbox,
 ]);
 
 export default Fiken;
