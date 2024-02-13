@@ -41,11 +41,9 @@ export abstract class Base {
 	}
 
 	protected prepareParamsForURLSearch(params: any): Record<string, string> {
-		if (!params) {
-			return {};
-		}
-
 		const result: Record<string, string> = {};
+
+		if (!params) return result;
 
 		Object.keys(params).forEach((key) => {
 			const value = params[key];
