@@ -13,8 +13,9 @@ import { Products } from './products';
 import { Projects } from './projects';
 import { Purchases } from './purchases';
 import { Sales } from './sales';
+import { company } from './schemas';
 import { Transactions } from './transactions';
-import { CompaniesParams, Company } from './types';
+import { CompaniesParams } from './types';
 import { applyMixins } from './utils';
 
 class Fiken extends Base {
@@ -22,7 +23,7 @@ class Fiken extends Base {
 		const searchParams = this.prepareParamsForURLSearch(params);
 		const queryString = `?${new URLSearchParams(searchParams).toString()}`;
 
-		return this.request<Company[]>(queryString);
+		return this.request<company[]>(queryString);
 	}
 }
 
